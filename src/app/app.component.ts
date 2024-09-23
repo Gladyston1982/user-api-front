@@ -1,10 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-user-list',
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.css']
 })
-export class AppComponent {
-  title = 'user-portal2';
+export class UserListComponent implements OnInit {
+  users: any[] = [];
+
+  constructor(private http: HttpClient) { }
+
+  ngOnInit(): void {
+    this.getUsers();
+  }
+
+  getUsers() {
+    this.http.get('http://localhost:5000/api/users')
+      .subscribe(
+        (data: any[]) => {
+          this.users = data;
+        },
+        (error) => {
+          console.error('Erro ao buscar usuários:', error);
+        }
+      );
+  }
 }
