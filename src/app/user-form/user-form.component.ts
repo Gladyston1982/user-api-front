@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-form',
@@ -18,68 +17,55 @@ export class UserFormComponent implements OnInit {
   isEditing: boolean = false;
   userId: string | null = null;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private http: HttpClient
+  ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      this.userId = params.get('id');
-      if (this.userId) {
-        this.isEditing = true;
-        this.getUserById(this.userId);
-      }
-    });
+    this.userId = this.route.snapshot.paramMap.get('id');
+    if (this.userId) {
+      this.isEditing = true;
+      this.getUserById(this.userId);
+    }
   }
 
   getUserById(userId: string) {
     this.http.get<User>(`http://localhost:5000/api/users/${userId}`)
       .subscribe({
-        next: (data) => {
-          this.user = data;
+        next: (user) => {
+          this.user = user;
         },
         error: (error) => {
           console.error('Erro ao buscar usuário:', error);
         }
       });
   }
-  
 
   salvarUsuario() {
     if (this.isEditing) {
-      this.updateUser();
-    } else {
-      this.createUser();
-    }
-  }
-
-  createUser() {
-    this.http.post<User>('http://localhost:5000/api/users', this.user)
-      .subscribe({
-        next: (data) => {
-          console.log('Usuário criado com sucesso:', data);
-          this.router.navigate(['/']);
-        },
-        error: (error) => {
-          console.error('Erro ao criar usuário:', error);
-        }
-      });
-  }
-  
-
-  updateUser() {
-    if (this.userId) {
-      this.http.put<User>(`http://localhost:5000/api/users/${this.userId}`, this.user)
+      this.http.put(`http://localhost:5000/api/users/${this.userId}`, this.user)
         .subscribe({
-          next: (data) => {
-            console.log('Usuário atualizado com sucesso:', data);
+          next: () => {
             this.router.navigate(['/']);
           },
           error: (error) => {
             console.error('Erro ao atualizar usuário:', error);
           }
         });
+    } else {
+      this.http.post('http://localhost:5000/api/users', this.user)
+        .subscribe({
+          next: () => {
+            this.router.navigate(['/']);
+          },
+          error: (error) => {
+            console.error('Erro ao criar usuário:', error);
+          }
+        });
     }
   }
-  
 
   cancelar() {
     this.router.navigate(['/']);

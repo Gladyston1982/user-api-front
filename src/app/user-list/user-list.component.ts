@@ -8,7 +8,7 @@ import { DatePipe } from '@angular/common';
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css'],
-  providers: [DatePipe] // Adicione aqui
+  providers: [DatePipe] 
 })
 export class UserListComponent implements OnInit {
   users: User[] = [];
@@ -30,7 +30,6 @@ export class UserListComponent implements OnInit {
         }
       });
   }
-  
 
   editarUsuario(userId: string) {
     this.router.navigate(['/user-form', userId]);
@@ -38,5 +37,21 @@ export class UserListComponent implements OnInit {
 
   cadastrarNovoUsuario() {
     this.router.navigate(['/user-form']);
+  }
+
+  excluirUsuario(userId: string) {
+    if (confirm('Tem certeza que deseja excluir este usuário?')) {
+      this.http.delete(`http://localhost:5000/api/users/${userId}`)
+        .subscribe({
+          next: () => {
+            // Atualiza a lista de usuários após a exclusão
+            // Remova o usuário da lista 'users' localmente
+            this.users = this.users.filter(user => user._id !== userId);
+          },
+          error: (error) => {
+            console.error('Erro ao excluir usuário:', error);
+          }
+        });
+    }
   }
 }
