@@ -6,13 +6,14 @@ import { AppComponent } from './app.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { RouterModule } from '@angular/router'; // Importe o RouterModule
-import { FormsModule } from '@angular/forms'; // Importe o FormsModule
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
-    UserFormComponent
+    UserFormComponent,
+  
   ],
   imports: [
     BrowserModule,

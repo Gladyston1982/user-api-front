@@ -1,16 +1,16 @@
 <table class="table">
   <thead>
     <tr>
-     <h1>Tela de listagem de usuarios</h1>
-      <th>Ações</th>
+      <th>Nome/Sobrenome</th>
+      <th>Data de Nascimento</th>
+      <th>Ações</th> <!-- Cabeçalho da coluna Ações -->
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let user of users">
-      <td>{{ user.nome }}
-      {{ user.sobrenome }}</td>
+      <td>{{ user.nome }} {{ user.sobrenome }}</td>
       <td>{{ user.dataNascimento | date: 'dd/MM/yyyy' }}</td>
-      <td>
+      <td> <!-- Coluna Ações -->
         <button *ngIf="user._id" (click)="editarUsuario(user._id)" class="btn btn-primary">Editar</button>
         <button *ngIf="user._id" (click)="excluirUsuario(user._id)" class="btn btn-danger">Excluir</button>
       </td>

@@ -19,7 +19,7 @@ export class UserListComponent implements OnInit {
     this.getUsers();
   }
 
-  getUsers() {
+  getUsers(): void {
     this.http.get<User[]>('http://localhost:5000/api/users')
       .subscribe({
         next: (data) => {
@@ -31,7 +31,8 @@ export class UserListComponent implements OnInit {
       });
   }
 
-  editarUsuario(userId: string) {
+  editarUsuario(userId: string): void {
+    console.log('Id do usuario', userId)
     this.router.navigate(['/user-form', userId]);
   }
 

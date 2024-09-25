@@ -1,0 +1,53 @@
+/* Estilos para o formulário */
+form {
+  width: 50%; /* Define a largura do formulário */
+  margin: 20px auto; /* Centraliza o formulário na página */
+  padding: 20px; /* Adiciona preenchimento ao formulário */
+  border: 1px solid #ddd; /* Adiciona uma borda ao formulário */
+  border-radius: 5px; /* Arredonda as bordas do formulário */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
+}
+
+/* Centraliza o título */
+h2 {
+  text-align: center; /* Centraliza o título */
+  margin-bottom: 20px; /* Adiciona espaçamento abaixo do título */
+}
+
+/* Estilos para os campos do formulário */
+.form-group {
+  margin-bottom: 15px; /* Adiciona um espaçamento entre os campos */
+}
+
+label {
+  display: block; /* Exibe a label em uma linha separada */
+  margin-bottom: 5px; /* Adiciona um espaçamento abaixo da label */
+}
+
+input[type="text"],
+input[type="date"] {
+  width: 100%; /* Define a largura do campo de entrada */
+  padding: 10px; /* Adiciona preenchimento ao campo de entrada */
+  border: 1px solid #ddd; /* Adiciona uma borda ao campo de entrada */
+  border-radius: 4px; /* Arredonda as bordas do campo de entrada */
+  box-sizing: border-box; /* Inclui a borda e o preenchimento na largura total */
+}
+
+/* Estilos para os botões */
+.btn {
+  padding: 10px 20px; /* Adiciona preenchimento aos botões */
+  border: none; /* Remove a borda dos botões */
+  border-radius: 4px; /* Arredonda as bordas dos botões */
+  cursor: pointer; /* Define o cursor como um ponteiro */
+  margin-right: 5px; /* Adiciona um espaçamento entre os botões */
+}
+
+.btn-primary {
+  background-color: #007bff; /* Azul */
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #6c757d; /* Cinza */
+  color: white;
+}

@@ -1,0 +1,46 @@
+/* Estilos para a tabela */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse; /* Remove espaçamento entre as células */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Adiciona uma borda inferior */
+  }
+  
+  th {
+    background-color: #f2f2f2; /* Define a cor de fundo do cabeçalho */
+    font-weight: bold; /* Define o peso da fonte do cabeçalho */
+  }
+  
+  /* Estilos para os botões */
+  .btn {
+    margin-right: 5px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-primary {
+    background-color: #007bff; /* Azul */
+    color: white;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545; /* Vermelho */
+    color: white;
+  }
+  
+  /* Estilos para o botão "Cadastrar Novo Usuário" */
+  .btn-success {
+    margin-top: 20px;
+    display: block; /* Ocupa toda a largura */
+    width: fit-content; /* Ajusta a largura do botão */
+    margin-left: auto; /* Alinha o botão à direita */
+    margin-right: auto; /* Alinha o botão à direita */
+  }
